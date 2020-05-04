@@ -1,0 +1,2 @@
+Scraping means parsing the content from a website and pulling out exactly the information that we need.
+We will also be using the Requests library for handling the HTTP requests

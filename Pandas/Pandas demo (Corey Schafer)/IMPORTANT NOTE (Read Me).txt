@@ -1,0 +1,2 @@
+The survey_results_public.csv file is not here.
+Since it was larger than 150 mb, i removed it. It couldn't be pushed into my repo.

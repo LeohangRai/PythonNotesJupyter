@@ -1,0 +1,15 @@
+syntax error doesn't mean that Python thinks you're bad.
+It is not a judgement of your ability as a programmer,
+it is not a judgement of your potential to be a programmer.
+Syntax error means Python is lost.
+You are learning Python's language because Python can't learn your language.
+You're smarter than Python.
+We can teach you.
+You can learn, but Python can't.
+And so when it says syntax error, even though you feel like it's a rejection,
+syntax error simply means that Python is lost.
+It just doesn't have really friendly words when it says it's lost,
+it just goes syntax error, which literally is exactly what's happening.
+Your syntax is not something that Python understands.
+So just understand as you go through the next couple of weeks that you will be
+frustrated. 

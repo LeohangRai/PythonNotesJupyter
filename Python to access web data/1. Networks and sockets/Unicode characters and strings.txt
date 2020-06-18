@@ -1,0 +1,116 @@
+#Why we need to understand the decode and encode operations
+
+Before we do the send and before we receive, we have to encode and decode this stuff so that it works out 
+and it works out correctly.
+Decode is a method in the bytes class.
+The default is UTF-8, which is probably all you're ever going to use, and the same thing is true, strings can be 
+encoded using UTF-8 into a byte array and then we send that byte array out to the outside world. 
+
+On the way out (while sending), we have a internal string.
+Before we send it, we have to encode it, and then we send it.
+Getting stuff back, we receive it, it comes back as bytes.
+We happen to know it's UTF-8 or we're letting it automatically detect UTF-8 and
+decode it and now we have a string.
+And now internally inside of Python we can write files,
+we can do all kinds of stuff in and out of stuff and it sort of works all together. 
+
+#Summary: (Also look at the picture (encoding and decoding for sockets))
+1. While sending over the network:
+String(unicode) ----encode--> bytes(UTF-8) ----> Socket (and through the socket, it goes to the network)
+
+2. While receiving from a network:
+Socket(network, through the socket) ----> bytes(UTF-8) -----decode--> String(Unicode)
+
+
+#Explanation of Unicode in Python: (How it came about)
+There's a python function called ord() which stands for ordinal.
+What's the ordinal? What is the number corresponding to H, and that's 72.
+
+ord(e'') >101.
+ord('\n') >10.
+Remember, newline is a single character.
+
+This also kind of explains why the lowercase letters are all greaterthan the uppercase letters, because 
+they're ordinal for ASCII.
+Now, there's so many character sets but just for the default old school 128 characters that we could 
+represent with ASCII, the uppercase letters had a lower ordinal than lowercase letters.
+So, 'Hi' is less than 'aaa'.
+
+
+In the 70's and 80's, we had these situations where Japanese computers pretty much couldn't talk to American computers or 
+European computers at all.
+I mean, the Japanese computers just had their own way of representing characters.
+And the American computers had their own way of representing characters and they just couldn't talk.
+But they invented this thing called Unicode.
+And so Unicode is this universal code for hundreds of millions of different characters and hundreds of 
+different character sets.
+And so Unicode has lots and lots of characters, not 128.
+Lots and lots of characters.
+
+
+
+#Unicode is variable length
+The nice thing about it is that UTF overlaps with ASCII, right?
+And so if the only characters you're putting in are the original ASCII or Latin I character set, then UTF-8 and 
+ASCII are literally the same thing.
+And then use a special character that's not part of ASCII to indicate flipping from one-byte characters to 
+two-byte characters or three-byte characters or four-byte.
+So it's a variable length.
+
+And so you can automatically detect, you can just be reading through a string and
+say, whoa I just saw this weird marker character.
+I must be in UTF-8.
+And then if I'm in UTF-8 then I can sort of expand this and find, represent all those character sets and all 
+those characters in those character sets.  
+
+
+
+Inside Python everything is Unicode.
+
+
+#Python 2 vs Python 3
+
+If you look at the byte string in Python 2, and then you look at a regular string in Python 2, 
+they're both type 'string'.
+The bytes are the same as string but the Unicode is different.
+
+Hence in Python 2:
+regular string == byte string
+regular string =/= unicode
+
+In Python 2:
+regular string =/= byte string
+regular string == unicode
+
+
+#What are byte strings?
+Bytes are raw, meaning unencoded, that it might be UTF-8, might be UTF-16, it might be ASCII.
+We don't know what it is, we don't know what its encoding is.
+
+NOTE: So it turns out that this is the thing we have to manage when we're dealing with
+data from the outside.
+
+#So the Takeaways
+So in Python 3 all the strings internally are Unicode.
+Not UTF-8, not UTF-16, not UTF-32, and if you just open a file, it pretty much usually works.
+If you talk to a network now, we have to understand. Now the key thing is we have to decode this stuff.
+We have to realize what is the character set of the stuff we're pulling in.
+
+Now the beauty is, is because 99% or maybe 100% of the stuff you'regoing to run across just uses UTF-8, 
+it turns out to be relatively simple. 
+We have the decode() function.
+When we talk to an external resource we get a byte array back like the socket gives us an array of bytes 
+which are characters.
+But they need to be decoded so we know, if it could be UTF-8, UTF-16 or ASCII.
+So there is this function that's part of byte arrays, so data.decode() says figure this thing out.
+And the nice thing is, is you can tell it what character set it is but
+by default it assumes UTF-8 or ASCII dynamically.
+Because ASCII and UTF-8 are upwards compatible with one another.
+
+So if it's like old data, you're probably getting ASCII, if it's newer data,
+you're probably getting UTF-8.
+And literally, it's a law of diminishing returns, it's very rare that you get anything other than those two,
+so you almost never have to tell it what it is, right?
+So you just say decode it, look at it.
+It might be ASCII, might be a UTF-8, but whatever it is by the time it's done with that it's a string.
+ 

@@ -1,0 +1,43 @@
+What is web scraping?
+When a program or script pretends to be a browser and retrieves web pages, looks at those web pages, extracts
+information and then looks at more web pages.
+
+#Web Crawling / Spidering the web
+Search engines like (google/bing) scrape web pages.
+We call this ''Spidering the web" or "web crawling".
+
+
+#Why Beautifulsoup? What is it?
+
+#The problem of HTML files:
+So the biggest problem in spidering is the parsing of the HTML that comes back.
+HTML is a nasty little representation and it turns out that when your browser retrieves HTML it goes through
+a whole bunch of things that effectively forgives syntax errors in HTML.
+Because they figured ah, we'll just show it.
+Why tell people about each syntax error?
+So it turns out that there is lots of HTML on the web that has syntax errors in it but you don't even notice it. 
+
+We could do regular expressions, find(), split(), and we would find quickly it'll work for the first two pages but 
+the third through the thousandth page blows up because.
+"I didn't realize that's what the href,"
+"I didn't realize you could put a newline there."
+"Who would have put a newline there, why would they do that, and then you fix that."
+
+NOTE: And you realize after you try to fix this and you try to parse all the links that
+there is just so many variations and someone has already done that.
+
+#How to tackle this problem?
+And it's a library called BeautifulSoup from a place called crummy.com
+I think the naming of this is all sort of this tongue in cheek of what
+a mess HTML is.
+And so instead of calling it HTML super parser, they just call it something silly
+because it's kind of a silly problem because HTML on the web is just so bad. 
+
+
+#How does Beautiful soup work
+BeautifulSoup is smart enough to convert all this stuff so it just takes the whole file and uses this HTML parser.
+There's some other options that you could have here, but that's the one that I recommend in this case.
+And then you get back an object. And what happens is, in this soup variable,
+it's somehow taken all the nasty bits that come from the web page
+and cleaned them up, and made a little pretty tree of things.
+You don't have to worry about the internal structure, it is a soup object.

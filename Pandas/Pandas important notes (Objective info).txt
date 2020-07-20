@@ -32,3 +32,15 @@ That means, if i use this:
 df['name':'address']
 
 Then all the columns that are in between name and address, including address will be sliced.
+
+
+#value_counts()
+This method shows the count of every single value in the selected column
+For example, if a column has values of Yesses an NOs, then thatcolumn.value_counts()
+would show the total num of Yes and NOs.
+
+We can only apply this method if the resultant of filter is a Series, not a frame 
+
+
+#count() vs value_counts()
+count() only gives how many non-nan entries are there in the specified column.

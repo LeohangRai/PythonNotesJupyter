@@ -1,0 +1,21 @@
+Syntax:
+switch (<variable>){
+    case value_1:
+        do_sth;
+        break;
+    
+    case value_2:
+        do_sth;
+        break;
+
+    default:
+        do_sth;
+        break;
+}
+
+
+In the switch (variable) part, we place the variable whose value differs and according to the differeing values,
+we make different decisions in the case part.
+If case value_1, the do sth.
+Else if case value_2, do sth else.
+And the last "else" like in if/else statements in the switch statements is the default case.

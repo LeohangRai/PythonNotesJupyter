@@ -1,0 +1,93 @@
+#Request/Response Cycle in HTTP
+
+#Getting data from the Server
+
+Each time the user clicks on an anchor tag with an href= value, to switch to a new page, the browser makes a 
+connection to the web server and issues a "GET" request to get the content of the page at the specified URL.
+
+The server returns the HTML document  to the browser which formats and displays document to the user.
+
+#Syntax of a request:
+This is what the syntax of a request from the client to the server looks like:
+GET http://www.drchuck.com/page.html HTTP/1.0
+
+GET, capital letters with the space
+and then a URL,
+Uniform Resource Locator, and then a protocol, and so we connect.
+Then, this is the line that we send.
+That's a requesting of a document. 
+
+
+#How to do this in Python
+If we're going to do that same thing, which is make a connection to a port, send a get request,
+and then get some data back, we can then do this in Python.
+So, we started with those first three lines,
+import the socket, 
+connect the socket.
+
+import socket
+mysock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+mysock.connect(('data.pr4e.org', 80))
+cmd = 'GET http://data.pr4e.org/romeo.txt HTTP/1.0\n\n'.encode() #command for GET request 
+#(including a blank space)  '\n\n'
+#The encode() converts the unicode to UTF-8
+
+mysock.send(cmd)    #Sends the request
+
+while True:
+    data = mysock.recv(512)    #receive up to 512 characters
+    if (len(data) < 1):         #end of line
+        break    
+    print(data.decode())    #decode() converts the UTF-8 to unicode
+mysock.close()
+
+
+So, this socket first, it's like this porthole that lets you out.
+It's like a doorway out of your computer,
+but the doorway's not open and the doorways not connected to it yet.
+(just like handle in files, after connection though)
+
+That's what this does, makes the doorway, but there is nothing connected.
+Then, the connect basically extends out of your computer.
+This could fail if the server doesn't exist.
+
+So, it goes and finds the server, connects to port 80, and establishes the socket.
+
+When this line is done, what we have is we have a socket and it's connected to a server.
+You do know that the server's there and you know that their software on the other end of it,
+otherwise the connect will fail.
+
+But if the connect works, you're talking, but you haven't sent any data.
+Now, you can call methods on the socket object.
+
+Now, there's been connected like send and receive to send data across this or receive data from it.
+Now, part of the application protocol is, what do you do first?
+You send or receive.
+
+NOTE:
+Now, it turns out with HTTP, the server does a receive first and you do a send first.
+That's the rule. So, the first thing you do is you make a request and this is just a string.
+Now, we have to prepare it for sending.
+Prepare it for sending and then we send it.
+We send that, and so that means that you sent something to the server,
+and the server receives it.
+
+It goes, and read some files, and does some stuff, and then it's going to start sending data back.
+
+You can use a while loop now and receive is a method in the socket object once you've sent it,
+and it might take a couple of sends to get all the data.
+So, we're going to just print this stuff out onto our screen.
+If we get no data, that means end of file or end of transmission. So, we break out.
+Then, if we did get data, we decode it, that's taking data from the outside world
+and interpreting what it means internally for us.
+
+So, we're going to decode it, and so this loop is going to run a bunch of times until it hits end of file,
+and then we're going to close the socket,
+which tears all this stuff down because this actually takes up
+resources in your computer and the far ends computer as well.
+So, mysock.close closes that and that's it.
+
+So, that basically is request response cycle in Python and it's only like 10 lines of code.
+So, that's really impressive that Python's capable of doing that.
+
+ 

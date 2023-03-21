@@ -1,0 +1,68 @@
+
+
+#re.search vs re.findall
+re.search()
+returns True or False, depending upon whether the string matches the regex or not.
+
+re.findall()
+If we actually want the matching strings to be extracted, we use re.finall()
+
+The findall() method a list of all the matches from the string.
+If none is found, then an empty list.
+
+Example:
+import re
+x = 'My 2 favorite numbers are 19 and 42'
+
+y = re.findall('[0-9]+', x)  #
+
+z = re.findall('[AEIOU]+', x)
+
+print(y)
+print(z)
+
+Output:
+['2', '19', '42']
+[]
+
+
+
+#Greedy matching
+By default, in regex, the greedy matching is ON.
+This means the regular expression library attempts to give youthe largest possible version of the string that 
+you're matching.
+The repeat characters (+ and *) push outwards in both directions to match the largest possible string. 
+(i.e. Greedy)
+
+
+Let's say we have a string:
+x = 'From: Using the: whatever'
+
+If we define a regex like:
+^F.+:
+This regex means, starting with 'F', follwed by any character '.'  1 or many count with a ':'
+
+Here, we expect to get the result, 'From:' from the string x
+But what happens is, the regex will return the whole substring up to 'From: Using the:'
+This is because the greedy matching is ON.
+
+Example:
+#Greedy matching ON (by default)
+import re
+x = 'From: Using the: character'
+y = re.findall('^F.+:', x)
+y
+
+> ['From: Using the:']
+
+#So how to avoid the greedy matching
+We can do this by using the '?' symbol.
+It tells the regex to match the first (shortest) string match.
+
+Example:
+#Greedy matching OFF
+import re
+x = 'From: Using the: character'
+y = re.findall('^F.+?:', x)
+y
+> ['From:']

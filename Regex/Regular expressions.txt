@@ -1,0 +1,93 @@
+Regular Expressions:
+ - wildcard expressions for matching and parsing strings
+(programming language for string matching)
+(it's like programming templates to find matches in the string)
+It is a really smart way to look through lots of text
+
+About Regular expressions:
+ - very powerful and quite cryptic
+ - fun once you understand them
+ - regular expressions are a language unto themselves
+ - a language of "marker characters" - programming with characters
+ - kind of an old school language
+
+
+Instead of programming with lines, we are actually programming with characters.
+
+NOTE: Look at the regular expressions quick guide for knowing what are the symbols in regex
+
+
+In Python, we can use regex by importing the library re
+import re
+
+
+NOTE:
+1. re.search() can be used to see if a string matches a regular expression, similar to the find() method
+
+2. re.findall() can be used to extract portions of a stiring that match your regex.
+(Similar to find() combined with a slicing [:] )
+
+
+
+#Using re.search() like find()
+Let's write a program that prints the line of a file that has "From: " in it
+
+1.Solution implementing find() method
+NOTE: If you've forgotten about the find() method, look at the note, it's ez peasy.
+
+handle = open('mbox-short.txt')
+for line in handle:
+    line = line.rstrip()
+    if line.find('From: ') >= 0
+        print(line) 
+
+
+2. Solution implementing re.search() method
+
+import re
+handle = open('mbox-short.txt')
+for line in handle:
+    line = line.rstrip()
+    if re.search('From', line):
+        print(line)
+
+
+
+#Using re.search() like startswith()
+
+
+
+#The big bracket (Square brackets):
+[]
+
+Inside the square  bracket, we can specify what to find.
+Like we can specify digits, range of digits, characters, etc
+
+Example:
+[0-9]
+
+I think everything inside the Sq.bracket is treated as OR
+
+
+
+#The plus symbol and The asterik symbol
++ : It means 1 or more.
+* : It means 0 or more
+
+For example, if we specify:
+[0-9]+
+This means 1 or more digits.
+
+Another example, if we specify:
+[0-9]*
+This means 0 or more digits
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,4 @@
+Static methods can be called directly through the class without having to instantiate an obj of that class.
+For example, we can call a static method as:
+
+className.staticMethod()

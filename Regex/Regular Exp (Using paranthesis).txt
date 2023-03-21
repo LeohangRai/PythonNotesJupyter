@@ -1,0 +1,25 @@
+Paranthesis are not treated as a keyword-esque character in regex.
+But they can be used to specify where to start and stop string extraction.
+
+For example:
+let's say we want to extract the emails from the string:
+
+"From: raileohang@herald.college.edu.np Sat Jan 5"
+
+Here, we can see that the email is followed by a "From: "
+Let's say that these patterns repeat in a txt file.
+
+Then we can use:
+^From (\S+@\S+)
+
+This means, the string should start with From with a space, some non space chars followed by an "@" again 
+followed by some non-space characters.
+
+
+Example:
+#Using paranthesis
+x = 'From raileohang@herald.college.edu.np Sat Jan 5'
+y = re.findall('^From (\S+@\S+)', x)
+y
+
+>['raileohang@herald.college.edu.np']

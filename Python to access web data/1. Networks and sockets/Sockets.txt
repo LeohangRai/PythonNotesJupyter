@@ -1,0 +1,10 @@
+Sockets in Python
+
+Python has built-in support for TCP sockets
+
+import socket
+
+#creating a socket object
+mysock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+#connecting using the socket object
+mysock = connect(('<host>', <port>))

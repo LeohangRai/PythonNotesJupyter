@@ -1,0 +1,3 @@
+http://quotes.toscrape.com/
+https://www.azlyrics.com/
+https://www.asos.com/men/

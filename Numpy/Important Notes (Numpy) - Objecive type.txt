@@ -1,0 +1,16 @@
+If  you add int as well as char items in the array, the dtype will change into "<U11"
+
+If you add int as well as float items in the array, all the items will be converted into float.
+
+If you add variable number of items in two vectors like [[1,2,3],[1,2]]
+it will be stored as an array of lists
+
+#Example:
+e = np.array([[1,2,3],[1,2]])
+
+>array([list([1, 2, 3]), list([1, 2])], dtype=object)
+ndim = 1
+
+
+shape is not a method, it's an attribute.
+so don't use paranthesis

@@ -1,0 +1,53 @@
+Sometimes, due to the data exchange format failure, one side might blow up or the other side might blow up and
+it's like whose fault is it?
+And so it's important to be able to define a contract as to what is acceptable XML
+So we have to define it kind of at the moment of data exchange, and that's what XML schema does. 
+
+So you can just look at a document and you can say yes, this validates, or no, it doesn't validate.
+And validation is not the act of transferring the data or even deserializing the data.
+Validation is the act of verifying that the data is in the right format.
+It's a contract.
+
+And so XML validation is the act of taking an document and a Schema Contract,
+which itself is also an XML document, and then sending to the Validator. 
+
+
+The XML Schema defines:
+ - what kind of tag to use,  
+ - how much data you're supposed to put in it.
+ - Can you have any child tags underneath it?
+
+
+Example:
+
+#XML Schema Example:
+<xs:complexType name = 'person'>
+  <xs:sequence>
+      <xs:element name = 'last name' type = 'xs:string'/>
+      <xs:element name = 'age' type = 'xs:integer'/>
+      <xs:element name = 'dateofbirth' type = 'xs:date'/>
+  <xs:sequence> 
+</xs:complexType>
+
+
+#Corresponding XML:
+<person>
+  <lastname>Severance</lastname>
+  <age>17</age>
+  <dateofbirth>2001-04-17</dateofbirth>
+</person>
+
+
+
+
+#Different XML Schema Languages:
+- Document Type Defintion (DTD)
+- Standard Generalized Markup Language (SGML)
+- XML Schema from W3C (XSD)
+
+
+---> We use XSD
+
+
+W3C - World Wide Web Consortium
+

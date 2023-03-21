@@ -1,0 +1,44 @@
+Suppose we have two programs, one written in Python and other in Java.
+And we have to transfer data between them, over the internet.
+
+#Wire Protocol
+To specify how to transfer data between these kind of programs, there is a protocol named Wire Protocol.
+It defines how the data is put on the wire, or how the data leaves one system, transits a network, and then 
+enters another system. 
+
+So we can't say that we're going to send Python data or Java data across the network.
+We just have to send network on some format that we agree on.
+
+#Wire Formats (JSON, XML)
+And so we have to argue about what format to use. 
+The most popular wire formats are as follows:
+1. XML
+2. JSON
+
+
+#Serialization
+The act of going from an internal representation on one computer out to a sort of interchange format is 
+called serialization.
+
+It is called serialization because in the old days, we had these wires and
+we sent the data serially, across one character at a time.
+So it was taking, from the internal memory of the computer a format that we could sort of send one character at 
+a time, so we called this a serialization format. 
+
+
+#Deserialization
+The act of taking the data off of the wire and turning it into a new internal data structure, in the new 
+environment, potentially in a very new language, is called de-serialization. 
+(Basically, the opposite of serialization)
+
+
+#The overall process
+So we take our internal structure, serialize it, send it across the network, then we receive it.
+We de-serialize it, and then we use it in this other programming language,
+in whatever structure makes sense, in that particular programming language. 
+
+Example:
+Python program data ----serialize---> Wire format (XML/JSON) -----deserialize---> Java program
+
+
+

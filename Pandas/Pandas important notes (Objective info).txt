@@ -1,0 +1,46 @@
+
+
+#Each column of a dataframe is an object of Series class.
+That means, each column of a datafram is a Serie.
+
+if you see the type of a df column like:
+type(df['column_name'])
+The output is gonna be:
+pandas.core.series.Series
+
+
+
+#Dot Notation vs Big Bracket
+Dot notation can also be used for accessing the column of a dataframe:
+Example:
+df['email'] is equivalent to df.email
+
+
+But the disadvantage of using dot notation is that, if the column name that you have set for some column may be 
+same as one of the attributes of the dataframe obj, in that case, we won't get the expected result.
+
+Also, if there's space in between the string of the column name, it won't work.
+Like df.first name (This won't work)
+
+So it is better to use [] instead of dot notation
+
+
+
+
+#Slicing using column names is inclusive
+That means, if i use this:
+df['name':'address']
+
+Then all the columns that are in between name and address, including address will be sliced.
+
+
+#value_counts()
+This method shows the count of every single value in the selected column
+For example, if a column has values of Yesses an NOs, then thatcolumn.value_counts()
+would show the total num of Yes and NOs.
+
+We can only apply this method if the resultant of filter is a Series, not a frame 
+
+
+#count() vs value_counts()
+count() only gives how many non-nan entries are there in the specified column.

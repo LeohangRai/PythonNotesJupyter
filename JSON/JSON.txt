@@ -1,0 +1,25 @@
+XML is not bad, it's just that it's very powerful, more powerful than we need in general.
+JSON is very native to JavaScript
+
+
+#Important Note:
+In JSON, the names, i.e. they keys and values should be placed inside double quotes (" ") insted of  single quotes
+It is alright to use single quotes in python dictionary but in JSON, double quotes is mandatory.
+So make sure that the keys and values are placed inside double quotes before loading them with the
+json.loads() function.
+
+There are multiple ways to make sure to pass double quotes.
+1. Using str.replace method:
+data = data.replace(" ' ", ' " ')
+---> Replaces single quote with double quote
+
+
+2. json.dumps() method
+
+Also, we can use the dump function to replace single quotes with double quotes and then send the string into the 
+loads function as:
+
+
+#Important Note
+json.loads() is for loading a string
+json.load() is for loading a json file
